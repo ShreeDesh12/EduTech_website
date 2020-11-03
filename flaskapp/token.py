@@ -15,8 +15,8 @@ def generateOTP(phno):
     try:
         proxy_client = TwilioHttpClient()
         #proxy_client.session.proxies = {'https': os.environ['https_proxy']}
-        account_sid = 'ACdde6653e686d036a4b77ac5f402ad523'
-        auth_token = '98a166c783bc1e1a94f86a3d26fd88dd'
+        account_sid = os.environ.get('account_sid')
+        auth_token = os.environ.get('auth_token')
         client = Client(account_sid, auth_token)
         n = random.randint(1000, 9999)
         client.messages.create(
