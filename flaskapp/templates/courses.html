@@ -1,0 +1,29 @@
+{% extends 'account_layout.html' %}
+{% block account_content %}
+
+{% if current_user.admin %}
+<a href="{{ url_for('upload_course') }}" class="btn btn-info">Upload Course</a>
+{% endif %}
+<div class="row">
+    {% for course in courses %}
+    <a class="col-2 course btn" href="#">
+        <img src="{{ url_for('static', filename='courses/{}.svg'.format(course.id) ) }}" style="height: 200px;width: 150px" alt="">
+        <div>{{ course.name }}</div>
+        <span>Rs. {{ course.price }}</span>
+    </a>
+    {% if current_user.admin %}
+    <a class="btn btn-sm" style="height: 60px;background-color:rgba(255,21,18,0.82)
+" href="{{ url_for('delete_course', course_id = course.id) }}">
+        <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+    </a>
+    {% else %}
+    {% if current_user.courses.filter_by(id = course.id).first() %}
+        {% else %}
+        <a href="{{ url_for('add_course', course_id = course.id) }}" class="btn btn-sm" style="height: 60px;">
+            <i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i>
+        </a>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock account_content %}

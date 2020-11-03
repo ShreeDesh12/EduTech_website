@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submitted forms</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+<form action="", method="POST">
+    <fieldset class="form q-form border small">
+        <div class="form-group ">
+            {{ form.OTP.label(class="form-control-label ") }}
+
+            {% if form.OTP.data != session['otp'] %}
+            {{ form.OTP(class="form-control form-control-md is-invalid") }}
+            <div class="invalid-feedback">
+                <span >Invalid OTP</span>
+            </div>
+            {% else %}
+            {{ form.OTP(class="form-control form-control-md") }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+
+    </fieldset>>
+</form>
+</body>
+</html>

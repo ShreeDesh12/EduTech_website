@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {%block title%}
+        {% endblock title %}
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<meta name="referrer" content="strict-origin" /> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename = 'style.css') }}" >
+
+</head>
+<body>
+
+<nav id = "start" class="navbar navbar-defualt navbar-fixed-top" role = "navigation">
+    <div class="container-fluid">
+        <div class="d-flex flex-row-reverse bd-highlight md-3" >
+            {% if current_user.is_authenticated %}
+            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="{{ url_for('account', user_id = current_user.id) }}">Account</a></div>
+            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="\logout">Logout</a></div>
+            {% else %}
+            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="\login">Login</a></div>
+            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="\register">Sign Up</a></div>
+            {% endif %}
+            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="#" >Resourses</a></div>
+            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="{{ url_for('allcourses') }}" >Courses</a></div>
+            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="\">Home</a></div>
+
+        </div>
+    </div>
+</nav>
+
+{% for messages in get_flashed_messages(with_categories=true) %}
+<div class = "alert alert-{{ messages[0] }}">
+    {{ messages[1] }}
+</div>
+{%  endfor %}
+
+<div class="container">
+    {% if form %}
+    <div class="row">
+        <div class="col-md-4 col-12">
+            <div class="packing">
+                <form action="" method="POST">
+                    {% block content %}
+                    {% endblock content %}
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-5" style="margin-left: 10%;margin-top: 10vh">
+            <img src="{{ url_for('static', filename = 'svg/fill_forms.svg') }}" alt="">
+        </div>
+        {% endif %}
+    </div>
+    {% block info %}
+    {% endblock info %}
+</div>
+</body>
+</html>

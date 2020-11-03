@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+{% if title %}
+{{ title }}
+{% else %}
+Enter mobile number
+{% endif %}
+{% endblock title %}
+
+{% block content %}
+
+{{ form.hidden_tag() }}
+
+<div class="form-group ">
+    {{ form.otp.label(class="form-control-label ") }}
+    {{ form.otp(class="form-control form-control-md" , placeholder="----") }}
+</div>
+
+<div class="form-group">
+    {{ form.submit(class="btn btn-primary") }}
+</div>
+
+{% endblock content %}

@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Enter mobile number
+{% endblock title %}
+
+{% block content %}
+
+{{ form.hidden_tag() }}
+<div class="form-group ">
+    <label class="form-group">
+        Enter Mobile Number
+    </label>
+
+    {% if form.number.errors %}
+    {{ form.number(class="form-control form-control-md is-invalid") }}
+    <div class="invalid-feedback">
+        {% for error in form.number.errors %}
+        <span >{{ error }}</span>
+        {% endfor %}
+    </div>
+    {% else %}
+    {{ form.number(class="form-control form-control-md") }}
+    {% endif %}
+</div>
+<div class="form-group">
+    {{ form.submit(class="btn btn-primary") }}
+</div>
+
+{% endblock content %}

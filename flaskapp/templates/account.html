@@ -1,0 +1,12 @@
+{% extends 'account_layout.html' %}
+{% block account_content %}
+<div class="row">
+ {% for course in current_user.courses %}
+ <a class="col-2 course btn" href="#">
+  <img src="{{ url_for('static', filename='courses/{}.svg'.format(course.id) ) }}" style="height: 200px;width: 150px" alt="">
+  <div>{{ course.name }}</div>
+  <span>Rs. {{ course.price }}</span>
+ </a>
+ {% endfor %}
+</div>
+{% endblock account_content %}

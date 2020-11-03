@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block info %}
+
+<h2>Hello {{ current_user.firstname }}!</h2>
+<div class="d-flex flex-md-column bd-highlight mb-4 dashboard">
+    <div class="p-2 bd-highlight btn">
+        <i class="fa fa-3x fa-coffee" aria-hidden="true">
+        </i>
+        <h6>Code</h6>
+    </div>
+    <a href="{{ url_for('askQues') }}" class="p-2 bd-highlight btn">
+        <i class="fa fa-question-circle-o fa-3x" aria-hidden="true"></i>
+        <h6>Ask questions</h6>
+    </a>
+    <div class="p-2 bd-highlight btn">
+        <i class="fa fa-book fa-3x" aria-hidden="true"></i>
+        <h6>Books</h6>
+    </div>
+    <div class="p-2 bd-highlight btn">
+        <i class="fa fa-users fa-3x" aria-hidden="true"></i>
+        <h6>Group discussion</h6>
+    </div>
+</div>
+<div class="courses">
+    <h3 class="heading">{{ heading }}</h3>
+    <div class="container">
+        {% block account_content %}
+        {% endblock account_content %}
+    </div>
+</div>
+{% endblock info %}

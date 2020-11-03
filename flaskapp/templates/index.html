@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="strict-origin" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename = 'style.css') }}" >
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<nav id = "start" class="navbar navbar-defualt navbar-fixed-top" role = "navigation">
+    <div class="container-fluid">
+        <div class="d-flex flex-row-reverse bd-highlight md-3" >
+            {% if current_user.is_authenticated %}
+            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="{{ url_for('account', user_id = current_user.id) }}">Account</a></div>
+            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="\logout">Logout</a></div>
+            {% else %}
+            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="\login">Login</a></div>
+            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="\register">Sign Up</a></div>
+            {% endif %}
+            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="#" >Resourses</a></div>
+            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="{{ url_for('allcourses') }}" >Courses</a></div>
+            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="\">Home</a></div>
+
+        </div>
+    </div>
+</nav>
+{% if current_user.is_authenticated and current_user.admin %}
+<div class="container">
+    <div class="row">
+        <div class="col-2 count_box" style="background-color: #99ee99;text-align: center;padding: 20px">
+            <b>Total Users</b>
+            <div>{{ total_users }}</div>
+        </div>
+        <div class="col-2" style="background-color: #ee9999;text-align: center;padding: 20px">
+
+            <b>Total courses</b>
+            <div>{{ total_courses }}</div>
+
+        </div>
+        <div class="col-2" style="background-color: aquamarine;text-align: center;padding: 20px">
+
+            <b>Total Books</b>
+            <div>{{ total_books }}</div>
+
+        </div>
+        <div class="col-2" style="background-color: greenyellow;text-align: center;padding: 20px">
+
+            <b>Total subscribers</b>
+            <div>{{ total_courses_bought }}</div>
+
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container">
+        <div class="row">
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="description" >
+                        <h1>Clarify your <span style="color: rgba(77,86,238,0.82)">doubts</span></h1>
+                        <h2>in your language</h2>
+                        <a href="{{ url_for('askQues') }}" class="btn btn-primary" action="submit">ask your doubts now</a>
+
+                    </div>
+                </div>
+                <div class="col-6">
+                    <img src="{{ url_for('static', filename = 'svg/clarify_doubts.svg') }}" alt="">
+                </div>
+            </div>
+            <div class="row" style="padding: 30px;align-content: center">
+                <div  class="col-1"></div>
+                <a href="#" class="col-2 border border-outline btn">
+                    <div class="pack" style="background-color: #ee9999">
+                        <img src="{{ url_for('static', filename = 'svg/book.svg') }}" alt="">
+                    </div>
+                    <div class="info">
+                        <small><b>More than 1000+</b></small>
+                        <small><b>books</b></small>
+                    </div>
+                </a>
+                <a href="#" class="col-2 border border-outline btn">
+                    <div class="pack" style="background-color: rgba(87,133,238,0.82)">
+                        <img src="{{ url_for('static', filename = 'svg/question.svg') }}" alt="">
+                    </div>
+                    <div class="info">
+                        <small><b>More than 100000+</b></small>
+                        <small><b>doubts</b></small>
+                    </div>
+                </a>
+                <a href="#" class="col-2 border border-outline btn">
+                    <div class="pack" style="background-color: rgba(238,227,83,0.82)">
+                        <img src="{{ url_for('static', filename = 'svg/winners.svg') }}" alt="">
+                    </div>
+                    <div class="info">
+                        <small><b>Win awards</b></small>
+                    </div>
+                </a>
+                <a href="#" class="col-2 border border-outline btn">
+                    <div class="pack" style="background-color: #99ee99">
+                        <img src="{{ url_for('static', filename = 'svg/online_test.svg') }}" alt="">
+                    </div>
+                    <div class="info">
+                        <small><b>Online Test</b></small>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-6">
+                <img src="{{ url_for('static', filename = 'svg/teaching.svg') }}" alt="">
+            </div>
+            <div class="col-6">
+                <div class="description">
+                    <h2>Learn from Best teachers</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos excepturi iure laborum neque,
+                        obcaecati omnis soluta voluptatem! Adipisci delectus dolores eligendi laboriosam magni
+                        temporibus voluptatem.</p>
+                    <div class="container">
+                        <div class="d-flex flex-row md-3">
+                            <div class="p-2">
+                                <img class="rounded-circle" src="{{ url_for('static', filename = 'professor_photos/pic.jpg') }}" alt="" >
+                                <h6>Shreeniwas </h6>
+                                <h6 style="padding-left: 10% ">Deshpande</h6>
+                            </div>
+                            <div class="p-2">
+                                <img class="rounded-circle" src="{{ url_for('static', filename = 'professor_photos/pic.jpg') }}" alt="" >
+                                <h6>Shreeniwas </h6>
+                                <h6 style="padding-left: 10% ">Deshpande</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>  
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="description" >
+                    <h2>Do group discussions</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos excepturi iure laborum neque,
+                        obcaecati omnis soluta voluptatem! Adipisci delectus dolores eligendi laboriosam magni
+                        temporibus voluptatem.</p>
+                    <a href="#" class="btn btn-home" action="submit">Group discussion</a>
+
+                </div>
+            </div>
+            <div class="col-6">
+                <img src="{{ url_for('static', filename = 'svg/groupDiscussion.svg') }}" alt="">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <img src="{{ url_for('static', filename = 'svg/doubtClearing.svg') }}" alt="">
+            </div>
+            <div class="col-6">
+                <div class="description" >
+                    <h2>Best doubt clearing</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos excepturi iure laborum neque,
+                        obcaecati omnis soluta voluptatem! Adipisci delectus dolores eligendi laboriosam magni
+                        temporibus voluptatem.</p>
+                    <a href="{{ url_for('askQues') }}" class="btn btn-home" action="submit">Doubt clearing</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="description" >
+                    <h2>Subscribe Now</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos excepturi iure laborum neque,
+                        obcaecati omnis soluta voluptatem! Adipisci delectus dolores eligendi laboriosam magni
+                        temporibus voluptatem.</p>
+                    <a href="{{ url_for('allcourses') }}" class="btn btn-home" action="submit">Buy Now</a>
+
+                </div>
+            </div>
+            <div class="col-6">
+                <img src="{{ url_for('static', filename = 'svg/payment.svg') }}" alt="">
+            </div>
+        </div>
+    </div>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% extends 'account_layout.html' %}
+{% block account_content %}
+
+<div class="outline-border">
+        <b>
+            {{ post.ques }}
+        </b>
+    {% if current_user.admin %}
+    <form action="" method="POST">
+        {{ accform.hidden_tag() }}
+        <fieldset class="form q-form">
+            <div class="form-group">
+                {{ accform.answer.label(class="form-control-label") }}
+
+                {% if accform.answer.errors %}
+                {{ accform.answer(class="form-control form-control-md is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in accform.answer.errors %}
+                    <span >{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ accform.answer(class="form-control form-control-md") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ accform.submit(class="btn btn-primary") }}
+            </div>
+        </fieldset>
+    </form>
+    {% endif %}
+    {% if post.answers %}
+    {% for ans in post.answers %}
+    <div style="padding-bottom: 20px;">
+        <p>
+            {{ ans.sol }}
+        </p>
+    </div>
+
+    {% endfor %}
+    {% else %}
+    <div>
+        <small>
+            No answers found
+        </small>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock account_content %}

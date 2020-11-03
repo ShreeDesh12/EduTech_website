@@ -1,0 +1,109 @@
+{% extends 'layout.html' %}
+{% block title %}
+{% if title %}
+{{ title }}
+{% else %}
+Webpage
+{% endif %}
+{% endblock title %}
+{% block content %}
+{{ form.hidden_tag() }}
+<legend class="border-bottom " >Register</legend>
+<fieldset class="form q-form small">
+    <div class="form-group ">
+        {{ form.firstname.label(class="form-control-label ") }}
+
+        {% if form.firstname.errors %}
+        {{ form.firstname(class="form-control form-control-md is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in form.firstname.errors %}
+            <span >{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form.firstname(class="form-control form-control-md") }}
+        {% endif %}
+    </div>
+
+    <div class="form-group ">
+        {{ form.lastname.label(class="form-control-label ") }}
+
+        {% if form.lastname.errors %}
+        {{ form.lastname(class="form-control form-control-md is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in form.lastname.errors %}
+            <span >{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form.lastname(class="form-control form-control-md") }}
+        {% endif %}
+    </div>
+
+    <div class="form-group ">
+        {{ form.email.label(class="form-control-label ") }}
+
+        {% if form.email.errors %}
+        {{ form.email(class="form-control form-control-md is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in form.email.errors %}
+            <span >{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form.email(class="form-control form-control-md") }}
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form.password.label(class="form-control-label ") }}
+
+        {% if form.password.errors %}
+        {{ form.password(class="form-control form-control-md is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in form.password.errors %}
+            <span >{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form.password(class="form-control form-control-md") }}
+        {% endif %}
+
+    </div>
+
+    <div class="form-group">
+        {{ form.Confirmpassword.label(class="form-control-label ") }}
+
+        {% if form.Confirmpassword.errors %}
+        {{ form.Confirmpassword(class="form-control form-control-md is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in form.Confirmpassword.errors %}
+            <span >{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form.Confirmpassword(class="form-control form-control-md") }}
+        {% endif %}
+
+    </div>
+    <div class="form-group">
+        {{ form.dob.label(class="form-control-label ") }}
+
+        {% if form.dob.errors %}
+        {{ form.dob(class="form-control form-control-md is-invalid datepicker") }}
+        <div class="invalid-feedback">
+            {% for error in form.dob.errors %}
+            <span >{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form.dob(class="form-control form-control-md datepicker") }}
+        {% endif %}
+
+    </div>
+    <div class="form-group">
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+
+</fieldset>
+{% endblock content %}

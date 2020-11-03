@@ -1,0 +1,111 @@
+body{
+    font-family: 'Josefin Sans', sans-serif !important;
+}
+.packing{
+    padding: 20px;
+    border: 1px solid rgba(77,86,238,0.82);
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+img{
+    width: 100%;
+}
+.description{
+    padding: 20px;
+    margin: 30px;
+    margin-top: 10%;
+}
+.btn-home{
+    border: 1px solid rgba(77,86,238,0.82);
+}
+.btn:hover{
+    box-shadow: 10px 10px 0px grey;
+}
+.btn-primary{
+    background-color: rgba(77,86,238,0.82);
+    color: white;
+}
+.btn-primary:hover{
+    background-color: white;
+    color:  rgba(77,86,238,0.82);
+}
+.btn-home:hover{
+    background-color:  rgba(77,86,238,0.82);
+    color: white;
+}
+.btn-nav:hover{
+    background-color: rgba(77,86,238,0.82);
+    color: white;
+}
+.rounded-circle{
+    height: 15vh;
+    width: auto;
+}
+.container .container .p-2{
+    margin-right: 10%;
+}
+.pack{
+    height: 150px;
+    margin-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+}
+.pack img{
+    padding-top: 30px;
+}
+.col-2{
+    margin-left: 40px;
+    border-radius: 10px;
+}
+.dashboard{
+    float: left;
+    margin-right: 50px;
+    width: 7%;
+    background-color: rgba(77,86,238,0.82);
+    box-sizing: border-box;
+    border: solid 3px rgba(77,86,238,0.82);
+}
+.dashboard .p-2 {
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+i{
+    padding: 10px;
+}
+.dashboard .p-2:hover{
+    background-color: white;
+    box-shadow: 5px 5px 0px black;
+}
+.courses{
+    position: relative;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-left: 8%;
+    min-height:50vh;
+    box-sizing: border-box;
+    #border: grey 1px solid;
+}
+.courses .heading{
+    background-color: rgba(238,117,171,0.82);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+.course{
+    background-color: aqua;
+    margin: 20px;
+    text-align: center;
+}
+
+.onlyDesktop{
+    margin-left: 10%;margin-top: 10vh
+}
+@media screen and (min-width: 600px){
+    .onlyDesktop{
+        #display: none;
+    }
+}
