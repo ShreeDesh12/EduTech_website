@@ -2,6 +2,7 @@ from flaskapp.models import User, Course, subs
 import os
 from PIL import Image
 from flask import url_for
+from flaskapp import db
 
 total_users = User.query.paginate().total
 total_courses = Course.query.paginate().total

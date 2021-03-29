@@ -1,7 +1,7 @@
 from flask import Blueprint, redirect, render_template, url_for, request
 from flask_login import login_user, current_user, logout_user, login_required
 from flaskapp import db, bcrypt
-from flaskapp.models import User, Post, Ans, sub, Course
+from flaskapp.models import User, Post, Ans, subs, Course
 from flaskapp.users.forms import registerForm, TelephoneForm, otpForm
 from flaskapp.users.utils import savepicture, refresh_count
 
