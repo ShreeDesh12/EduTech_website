@@ -1,6 +1,6 @@
-from flask import Blueprint, redirect, render_template, url_for, request, flash
+from flask import Blueprint, redirect, render_template, url_for, request, flash, current_app
 from flask_login import login_user, current_user, logout_user, login_required
-from flaskapp import db, bcrypt, app
+from flaskapp import db, bcrypt
 from flaskapp.models import User, Post, Ans, subs, Course
 from flaskapp.users.forms import registerForm, TelephoneForm, otpForm, loginForm
 from flaskapp.users.utils import savepicture, refresh_count
@@ -145,7 +145,7 @@ def delete_course(course_id):
         c = Course.query.get(course_id)
         db.session.delete(c)
         db.session.commit()
-        picPath = os.path.join(app.root_path , 'static/courses' , str(course_id) + '.svg')
+        picPath = os.path.join(current_app.root_path , 'static/courses' , str(course_id) + '.svg')
         if os.path.exists(picPath):
           os.remove(picPath)
         return redirect(url_for('users.allcourses'))
