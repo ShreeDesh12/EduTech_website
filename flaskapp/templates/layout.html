@@ -23,14 +23,14 @@
     <div class="container-fluid">
         <div class="d-flex flex-row-reverse bd-highlight md-3" >
             {% if current_user.is_authenticated %}
-            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="{{ url_for('account', user_id = current_user.id) }}">Account</a></div>
+            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="{{ url_for('users.account', user_id = current_user.id) }}">Account</a></div>
             <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="\logout">Logout</a></div>
             {% else %}
             <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="\login">Login</a></div>
             <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="\register">Sign Up</a></div>
             {% endif %}
             <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="#" >Resourses</a></div>
-            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="{{ url_for('allcourses') }}" >Courses</a></div>
+            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="{{ url_for('users.allcourses') }}" >Courses</a></div>
             <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="\">Home</a></div>
 
         </div>

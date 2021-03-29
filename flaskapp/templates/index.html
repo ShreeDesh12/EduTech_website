@@ -22,14 +22,14 @@
     <div class="container-fluid">
         <div class="d-flex flex-row-reverse bd-highlight md-3" >
             {% if current_user.is_authenticated %}
-            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="{{ url_for('account', user_id = current_user.id) }}">Account</a></div>
+            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="{{ url_for('users.account', user_id = current_user.id) }}">Account</a></div>
             <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="\logout">Logout</a></div>
             {% else %}
             <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="\login">Login</a></div>
             <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="\register">Sign Up</a></div>
             {% endif %}
             <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="#" >Resourses</a></div>
-            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="{{ url_for('allcourses') }}" >Courses</a></div>
+            <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="{{ url_for('users.allcourses') }}" >Courses</a></div>
             <div class="p-2 bd-highlight" > <a class="btn btn-nav" href="\">Home</a></div>
 
         </div>
@@ -71,7 +71,7 @@
                     <div class="description" >
                         <h1>Clarify your <span style="color: rgba(77,86,238,0.82)">doubts</span></h1>
                         <h2>in your language</h2>
-                        <a href="{{ url_for('askQues') }}" class="btn btn-primary" action="submit">ask your doubts now</a>
+                        <a href="{{ url_for('posts.askQues') }}" class="btn btn-primary" action="submit">ask your doubts now</a>
 
                     </div>
                 </div>
@@ -171,7 +171,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos excepturi iure laborum neque,
                         obcaecati omnis soluta voluptatem! Adipisci delectus dolores eligendi laboriosam magni
                         temporibus voluptatem.</p>
-                    <a href="{{ url_for('askQues') }}" class="btn btn-home" action="submit">Doubt clearing</a>
+                    <a href="{{ url_for('posts.askQues') }}" class="btn btn-home" action="submit">Doubt clearing</a>
 
                 </div>
             </div>
@@ -183,7 +183,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos excepturi iure laborum neque,
                         obcaecati omnis soluta voluptatem! Adipisci delectus dolores eligendi laboriosam magni
                         temporibus voluptatem.</p>
-                    <a href="{{ url_for('allcourses') }}" class="btn btn-home" action="submit">Buy Now</a>
+                    <a href="{{ url_for('users.allcourses') }}" class="btn btn-home" action="submit">Buy Now</a>
 
                 </div>
             </div>

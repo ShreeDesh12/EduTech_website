@@ -15,5 +15,10 @@ login_manager.login_view = 'login'
 login_manager.login_message_category= 'info'
 bcrypt = Bcrypt(app)
 
+from flaskapp.users.routes import users
+from flaskapp.posts.routes import posts
+from flaskapp.main.routes import main
 
-from flaskapp import routes
+app.register_blueprint(users)
+app.register_blueprint(posts)
+app.register_blueprint(main)
