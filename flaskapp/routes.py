@@ -8,6 +8,11 @@ from PIL  import Image
 from datetime import date
 import os
 
+total_users = 0
+total_courses = 0
+total_books = 0
+total_courses_bought = 0
+
 def refresh_count():
     total_users = User.query.paginate().total
     total_courses = Course.query.paginate().total
@@ -114,7 +119,11 @@ def login():
             login_user(user)
             next_page = request.args.get('next')
             if next_page:
-                return redirect(next_page, user_id = user.id)
+                try: 
+                    load = redirect(next_page, user_id = user.id)
+                except:
+                    load = redirect(next_page)
+                return load
             return redirect(url_for('account', user_id = user.id))
         else:
             flash('Incorrect username or password', 'danger')
@@ -164,7 +173,8 @@ def askQues():
         db.session.add(p)
         db.session.commit()
         return redirect(url_for('askQues'))
-    posts = Post.query.all()
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.id.desc()).paginate(page=page, per_page=5)
     return render_template('account_forms.html', accform = accform, posts = posts, heading='Ask Questions')
 
 @app.route('/post/<int:post_id>', methods = ['GET','POST'])

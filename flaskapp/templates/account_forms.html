@@ -25,11 +25,11 @@
     </fieldset>
 </form>
 {% endif %}
-{% for post in posts %}
+{% for post in posts.items %}
 <div class="outline-border">
     <a href="{{ url_for('enter_ans', post_id = post.id) }}">
         <b>
-            Q{{ post.id }}. {{ post.ques }}
+            Q) {{ post.ques }}
         </b>
     </a>
     {% if post.answers %}
@@ -49,6 +49,18 @@
     </div>
     {% endif %}
 </div>
+{% endfor %}
+
+{% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+    {% if page_num %}
+        {% if posts.page == page_num %}
+            <a href="{{ url_for('askQues', page=page_num) }}" class="btn btn-info mb-4">{{ page_num }}</a>
+        {% else %}
+            <a href="{{ url_for('askQues', page=page_num) }}" class="btn btn-outline-info mb-4">{{ page_num }}</a>
+        {% endif %}    
+    {% else %}
+        ...
+    {% endif %}
 {% endfor %}
 
 {% endblock account_content %}
