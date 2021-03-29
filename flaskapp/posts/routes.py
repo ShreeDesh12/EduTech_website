@@ -1,8 +1,9 @@
-from flask import Blueprint, render_template, redirect, flash, url_for, abort
+from flask import Blueprint, render_template, redirect, flash, url_for, abort, request
 from flask_login import current_user, login_required
 from flaskapp import db
 from flaskapp.models import User, Course, Ans, Post
 from flaskapp.posts.forms import ansForm, uploadCourse, questionForm
+from flaskapp.users.utils import savepicture
 
 posts = Blueprint('posts', __name__)
 
